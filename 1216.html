@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            font-size: 36px;
+            line-height: 1.5;
+            transition: background-color 0.5s ease;
+        }
+
+        .lightblue-bg {
+            background-color: lightblue;
+        }
+
+        .orange-bg {
+            background-color: orange;
+        }
+
+        .lightyellow-bg {
+            background-color: rgb(251, 255, 0);
+        }
+
+        /* Button styles with special effects */
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ddd; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // Function to get user input and compare
+    function compareInputs() {
+        // Get user input for the first number
+        var firstInput = prompt("Enter the first number:");
+
+        // Check if the input is a valid number
+        if (isNaN(firstInput)) {
+            alert("Please enter a valid number.");
+            return;
+        }
+
+        // Get user input for the second number
+        var secondInput = prompt("Enter the second number:");
+
+        // Check if the second input is a valid number
+        if (isNaN(secondInput)) {
+            alert("Please enter a valid number.");
+            return;
+        }
+
+        // Compare the inputs
+        var body = document.body;
+        if (parseInt(firstInput) > parseInt(secondInput)) {
+            // If the first input is greater, add class to change background color to lightblue
+            body.classList.add('lightblue-bg');
+            // Display the numbers and ">" on the background
+            body.innerText = firstInput + " > " + secondInput;
+        } else if (parseInt(secondInput) > parseInt(firstInput)) {
+            // If the second input is greater, add class to change background color to orange
+            body.classList.add('orange-bg');
+            // Display the numbers and "<" on the background
+            body.innerText = firstInput + " < " + secondInput;
+        } else {
+            // If the numbers are equal, add class to change background color to lightyellow
+            body.classList.add('lightyellow-bg');
+            // Display the numbers and "=" on the background
+            body.innerText = firstInput + " = " + secondInput;
+        }
+
+        // Create a button to show the first input
+        var showFirstButton = document.createElement('button');
+        showFirstButton.innerText = 'Show First Input';
+        showFirstButton.onclick = function() {
+            alert('First Input: ' + firstInput);
+        };
+        document.body.appendChild(showFirstButton);
+
+        // Create a button to show the second input
+        var showSecondButton = document.createElement('button');
+        showSecondButton.innerText = 'Show Second Input';
+        showSecondButton.onclick = function() {
+            alert('Second Input: ' + secondInput);
+        };
+        document.body.appendChild(showSecondButton);
+    }
+
+    // Call the function when the page loads
+    window.onload = compareInputs;
+</script>
+
+</body>
+</html>
